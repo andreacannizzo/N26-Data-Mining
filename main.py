@@ -3,7 +3,6 @@ from definitions import *
 import chromedriver_autoinstaller
 from selenium import webdriver
 
-
 # auto_chromedriver = chromedriver_autoinstaller.install() TODO Certificate issue
 auto_chromedriver = "/Users/andreacannizzo/WorkSpace/N26/venv/lib/python3.9/" \
                     "site-packages/chromedriver_autoinstaller/94/chromedriver"
@@ -26,7 +25,11 @@ for i in range(URL_elements.__len__()):
     browser.switch_to.window(browser.window_handles[1])
     browser.get(URL_lists[i])
     # retrieve data
-    get_tags(browser)
+    get_name(browser)  # string
+    get_value(browser)  # string
+    get_date(browser)  # string
+    get_category(browser)  # string
+    get_tags(browser)  # list
     # close new tab and go back to main
     browser.close()
     browser.switch_to.window(browser.window_handles[0])

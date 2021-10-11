@@ -1,6 +1,9 @@
 # Added by me
 .idea/
 inputs.py
+n26csv.csv
+cities.csv
+PandaProve.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
