@@ -2,6 +2,9 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import re
+import locale
+from datetime import datetime
 
 
 def login(browser, username_str, password_str):
@@ -51,10 +54,8 @@ def get_tags(browser):
         # tags_elements = browser.find_elements_by_xpath("//*[@id='tags_container']/div[*]/a")
         for i in range(tags_elements.__len__()):
             tags_lists.append(tags_elements[i].text)
-        #print(tags_lists)
         return tags_lists
     except:
-        #print("no tags")
         return tags_lists
 
 
@@ -63,11 +64,15 @@ def get_name(browser):
 
 
 def get_value(browser):
-    return browser.find_element_by_xpath("//*[@id='header_container']/div[3]/p/span/span").text
+    amount = browser.find_element_by_xpath("//*[@id='header_container']/div[3]/p/span/span").text
+    return float(re.findall(r"[-+]?\d*,\d+|\d+", amount)[0].replace(',', '.'))
 
 
 def get_date(browser):
-    return browser.find_element_by_xpath("//*[@id='header_container']/div[4]/span[1]").text
+    date_str = browser.find_element_by_xpath("//*[@id='header_container']/div[4]/span[1]").text
+    locale.setlocale(locale.LC_TIME, 'it_IT')
+    datetime_object = datetime.strptime(date_str, '%A %d %B %Y, %H:%M ·')
+    return datetime_object
 
 
 def get_category(browser):
