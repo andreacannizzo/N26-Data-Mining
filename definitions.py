@@ -48,32 +48,77 @@ def scroll_to_bottom(browser):
 
 def get_tags(browser):
     tags_lists = []
+    jointed_tags = ""
     try:
         tags_elements = WebDriverWait(browser, 2).until(
             EC.visibility_of_all_elements_located((By.XPATH, "//*[@id='tags_container']/div[*]/a")))
         # tags_elements = browser.find_elements_by_xpath("//*[@id='tags_container']/div[*]/a")
         for i in range(tags_elements.__len__()):
             tags_lists.append(tags_elements[i].text)
-        return tags_lists
+
+        for element in tags_lists:
+            jointed_tags = jointed_tags + element
+        return jointed_tags
     except:
-        return tags_lists
+        return jointed_tags
 
 
 def get_name(browser):
-    return browser.find_element_by_xpath("//*[@id='header_container']/div[2]/p").text
+    name = ""
+    logo = True
+    try:
+        logo_element = WebDriverWait(browser, 1).until(
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[1]/div/img")))
+    except:
+        logo = False
+    try:
+        if logo:
+            name = WebDriverWait(browser, 1).until(
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[2]/p"))).text
+        else:
+            name = WebDriverWait(browser, 1).until(
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[1]/p"))).text
+        return name
+    except:
+        return name
 
 
 def get_value(browser):
-    amount = browser.find_element_by_xpath("//*[@id='header_container']/div[3]/p/span/span").text
+    logo = True
+    try:
+        logo_element = WebDriverWait(browser, 1).until(
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[1]/div/img")))
+    except:
+        logo = False
+    if logo:
+        amount = WebDriverWait(browser, 1).until(
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[3]/p/span/span"))).text
+    else:
+        amount = WebDriverWait(browser, 1).until(
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[2]/p/span/span"))).text
     return float(re.findall(r"[-+]?\d*,\d+|\d+", amount)[0].replace(',', '.'))
 
 
 def get_date(browser):
-    date_str = browser.find_element_by_xpath("//*[@id='header_container']/div[4]/span[1]").text
+    logo = True
+    try:
+        logo_element = WebDriverWait(browser, 1).until(
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[1]/div/img")))
+    except:
+        logo = False
+    if logo:
+        date_str = WebDriverWait(browser, 1).until(
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[4]/span[1]"))).text
+    else:
+        date_str = WebDriverWait(browser, 1).until(
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[3]/span"))).text
     locale.setlocale(locale.LC_TIME, 'it_IT')
-    datetime_object = datetime.strptime(date_str, '%A %d %B %Y, %H:%M ·')
+    date_str = date_str.split(sep=' ·', maxsplit=1)[0]
+    datetime_object = datetime.strptime(date_str, '%A %d %B %Y, %H:%M')
     return datetime_object
 
 
 def get_category(browser):
-    return browser.find_element_by_xpath("//*[@id='details_container']/div[2]/div/div[1]/div/div[2]/div/div/p").text
+    return WebDriverWait(browser, 1).until(
+                    EC.visibility_of_element_located((By.XPATH,
+                                                      "//*[@id='details_container']/div[2]/div/div[1]/div/div[2]/div/div/p"))).text
