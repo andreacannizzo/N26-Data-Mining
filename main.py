@@ -12,7 +12,7 @@ browser.get('https://app.n26.com/login')
 login(browser, username, password)
 
 # Commentato perchè in prova è troppo lungo
-# scroll_to_bottom(browser)
+scroll_to_bottom(browser)
 
 # "//li/" for web elements, "//li/div/p/span/span[1]/a" to obtain href of each element
 # but the element whit the href is not clickable
@@ -44,4 +44,5 @@ for i in range(URL_elements.__len__()):
     browser.close()
     browser.switch_to.window(browser.window_handles[0])
 
+Data_Set.to_csv('N26_Data.csv', index=False)
 browser.close()

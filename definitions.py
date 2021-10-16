@@ -5,6 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 import re
 import locale
 from datetime import datetime
+import time
 
 
 def login(browser, username_str, password_str):
@@ -17,6 +18,9 @@ def login(browser, username_str, password_str):
         password.send_keys(password_str)
         submit = browser.find_element_by_xpath("//button")
         submit.submit()
+        for i in range(30):
+            print(f"You have {30-i} seconds to accept access")
+            time.sleep(1)
     except:
         print("problem(s) while logging in")
 
