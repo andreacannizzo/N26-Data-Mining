@@ -124,5 +124,8 @@ def get_date(browser):
 
 def get_category(browser):
     return WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH,
-                                                      "//*[@id='details_container']/div[2]/div/div[1]/div/div[2]/div/div/p"))).text
+            EC.visibility_of_element_located((By.XPATH,
+            "//*[@id='details_container']/div[2]/div/div[1]/div/div[2]/div/p[2]"))).text
+
+
+
