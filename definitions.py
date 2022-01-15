@@ -6,6 +6,7 @@ import re
 import locale
 from datetime import datetime
 import time
+import pandas as pd
 
 
 def login(browser, username_str, password_str):
@@ -128,4 +129,6 @@ def get_category(browser):
             "//*[@id='details_container']/div[2]/div/div[1]/div/div[2]/div/p[2]"))).text
 
 
-
+def get_last_url(csv_name):
+    df = pd.read_csv(csv_name, nrows=1)
+    return df.iloc[0, 1]

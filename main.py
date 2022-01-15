@@ -8,10 +8,7 @@ import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
 
-# TODO Certificate issue
 auto_chromedriver = chromedriver_autoinstaller.install()
-# auto_chromedriver = "/Users/andreacannizzo/WorkSpace/N26/venv/lib/python3.9/" \
-#                     "site-packages/chromedriver_autoinstaller/94/chromedriver"
 browser = webdriver.Chrome(auto_chromedriver)
 browser.get('https://app.n26.com/login')
 login(browser, username, password)
@@ -24,7 +21,9 @@ scroll_to_bottom(browser)
 URL_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
 URL_lists = []
 Data_Set = pd.DataFrame()
-for i in range(URL_elements.__len__()):
+N_range = URL_elements.__len__()-1
+
+for i in range(N_range):
     # print(i)
     URL_lists.append(URL_elements[i].get_attribute("href"))
     # open new tab, go there and load page
