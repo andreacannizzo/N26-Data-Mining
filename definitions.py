@@ -51,6 +51,24 @@ def scroll_to_bottom(browser):
         print("Sono già arrivato alla fine")
 
 
+def scroll_to_bottom_times(browser, times):
+    i = times
+    try:
+        button = WebDriverWait(browser, 10).until(
+            EC.visibility_of_element_located((By.XPATH, "//*[@title='Successivo']")))
+        while button.size != 0 and (i > 0 or times == 0):
+            try:
+                button = WebDriverWait(browser, 10).until(
+                    EC.visibility_of_element_located((By.XPATH, "//*[@title='Successivo']")))
+            except:
+                print("Sono arrivato alla fine")
+            button.send_keys(Keys.RETURN)
+            browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            i = i - 1
+    except:
+        print("Sono già arrivato alla fine")
+
+
 def get_tags(browser):
     tags_lists = []
     jointed_tags = ""
@@ -132,3 +150,16 @@ def get_category(browser):
 def get_last_url(csv_name):
     df = pd.read_csv(csv_name, nrows=1)
     return df.iloc[0, 1]
+
+
+def get_number_of_new_lines(browser):
+    url_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
+    start = 0
+    while True:
+        for i in range(start, url_elements.__len__() - 1):
+            if get_last_url("N26_Data.csv") == url_elements[i].get_attribute("href"):
+                return i
+        scroll_to_bottom_times(browser, 1)
+        start = url_elements.__len__()
+        url_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
+        time.sleep(1)

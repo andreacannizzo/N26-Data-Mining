@@ -7,29 +7,30 @@ import pandas as pd
 import ssl
 ssl._create_default_https_context = ssl._create_unverified_context
 
-
+# create browser
 auto_chromedriver = chromedriver_autoinstaller.install()
 browser = webdriver.Chrome(auto_chromedriver)
+# load n26 website and log in with inputs.py credentials
 browser.get('https://app.n26.com/login')
 login(browser, username, password)
-
-# Commentato perchè in prova è troppo lungo
-scroll_to_bottom(browser)
 
 # "//li/" for web elements, "//li/div/p/span/span[1]/a" to obtain href of each element
 # but the element whit the href is not clickable
 URL_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
-URL_lists = []
-Data_Set = pd.DataFrame()
-N_range = URL_elements.__len__()-1
+N_range = get_number_of_new_lines(browser)
+URL_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
 
-for i in range(N_range):
-    # print(i)
-    URL_lists.append(URL_elements[i].get_attribute("href"))
+if N_range > 50:
+    end = N_range - 50
+else:
+    end = -1
+
+for i in range(N_range-1, end, -1):
     # open new tab, go there and load page
     browser.execute_script("window.open('');")
+    url = URL_elements[i].get_attribute("href")
     browser.switch_to.window(browser.window_handles[1])
-    browser.get(URL_lists[i])
+    browser.get(url)
     # retrieve data
     name = get_name(browser)  # string
     value = get_value(browser)  # float
@@ -38,15 +39,15 @@ for i in range(N_range):
     tags = get_tags(browser)  # string
     # create Data Frame
     line = pd.DataFrame({"Data": [date],
+                         "URL": [url],
                          "Beneficiario": [name],
                          "Importo": [value],
-                         "URL": [URL_lists[i]],
                          "Categoria": [category],
                          "Tags": [tags]})
-    Data_Set = Data_Set.append(line, ignore_index=True)
-    # close new tab and go back to main
+    line.to_csv('N26_Data.csv', index=False, header=False, mode='a')
+    # close new tab and go back to home page
     browser.close()
     browser.switch_to.window(browser.window_handles[0])
+    time.sleep(1)
 
-Data_Set.to_csv('N26_Data.csv', index=False)
-browser.close()
+# browser.close()
