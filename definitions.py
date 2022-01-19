@@ -148,8 +148,8 @@ def get_category(browser):
 
 
 def get_last_url(csv_name):
-    df = pd.read_csv(csv_name, nrows=1)
-    return df.iloc[0, 1]
+    df = pd.read_csv(csv_name)
+    return df.tail(1).iloc[0, 1]
 
 
 def get_number_of_new_lines(browser):

@@ -16,19 +16,19 @@ login(browser, username, password)
 
 # "//li/" for web elements, "//li/div/p/span/span[1]/a" to obtain href of each element
 # but the element whit the href is not clickable
-URL_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
-N_range = get_number_of_new_lines(browser)
-URL_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
 
-if N_range > 50:
-    end = N_range - 50
+N_range = get_number_of_new_lines(browser)
+url_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
+
+if N_range > 1000:
+    end = N_range - 1000
 else:
     end = -1
 
 for i in range(N_range-1, end, -1):
     # open new tab, go there and load page
     browser.execute_script("window.open('');")
-    url = URL_elements[i].get_attribute("href")
+    url = url_elements[i].get_attribute("href")
     browser.switch_to.window(browser.window_handles[1])
     browser.get(url)
     # retrieve data
@@ -44,6 +44,8 @@ for i in range(N_range-1, end, -1):
                          "Importo": [value],
                          "Categoria": [category],
                          "Tags": [tags]})
+    # with open('N26_Data.csv', mode='a') as f:
+    #     f.write('\n')
     line.to_csv('N26_Data.csv', index=False, header=False, mode='a')
     # close new tab and go back to home page
     browser.close()
