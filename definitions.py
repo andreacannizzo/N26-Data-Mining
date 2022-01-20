@@ -169,11 +169,14 @@ def get_last_url(csv_name):
 def get_number_of_new_lines(browser):
     url_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
     start = 0
+    stop = url_elements.__len__()
     while True:
-        for i in range(start, url_elements.__len__() - 1):
+        print(start, stop)
+        for i in range(start, stop):
             if get_last_url("N26_Data.csv") == url_elements[i].get_attribute("href"):
                 return i
         scroll_to_bottom_times(browser, 1)
-        start = url_elements.__len__()
-        url_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
         time.sleep(1)
+        start = stop - 1
+        url_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
+        stop = url_elements.__len__()
