@@ -116,10 +116,24 @@ def get_value(browser):
     if logo:
         amount = WebDriverWait(browser, 1).until(
                     EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[3]/p/span/span"))).text
+        amount = amount.replace('.', '')
+        amount = amount.replace(',', '.')
+        if '.' in amount:
+            value = re.findall("[-+]?\d+\.\d+", amount)[0]
+        else:
+            value = re.findall("[-+]?\d+", amount)[0]
+        value = float(value)
     else:
         amount = WebDriverWait(browser, 1).until(
                     EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[2]/p/span/span"))).text
-    return float(re.findall(r"[-+]?\d*,\d+|\d+", amount)[0].replace(',', '.'))
+        amount = amount.replace('.', '')
+        amount = amount.replace(',', '.')
+        if '.' in amount:
+            value = re.findall("[-+]?\d+\.\d+", amount)[0]
+        else:
+            value = re.findall("[-+]?\d+", amount)[0]
+        value = float(value)
+    return value
 
 
 def get_date(browser):

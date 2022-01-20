@@ -20,8 +20,8 @@ login(browser, username, password)
 N_range = get_number_of_new_lines(browser)
 url_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
 
-if N_range > 1000:
-    end = N_range - 1000
+if N_range > 500:
+    end = N_range - 500
 else:
     end = -1
 
