@@ -17,7 +17,7 @@ login(browser, username, password)
 # N_range is the position of the last transaction registered in the .csv file
 N_range = get_number_of_new_lines(browser)
 # get the list of all transaction currently displayed in the browser
-url_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
+url_elements = browser.find_elements(By.XPATH, "//li/div/p/span/span[1]/a")
 
 # it will register 100 new transaction at maximum
 if N_range > 100:

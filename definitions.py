@@ -167,7 +167,7 @@ def get_last_url(csv_name):
 
 
 def get_number_of_new_lines(browser):
-    url_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
+    url_elements = browser.find_elements(By.XPATH, "//li/div/p/span/span[1]/a")
     start = 0
     stop = url_elements.__len__()
     max = 20
@@ -179,6 +179,6 @@ def get_number_of_new_lines(browser):
         scroll_to_bottom_times(browser, 1)
         time.sleep(1)
         start = stop - 1
-        url_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
+        url_elements = browser.find_elements(By.XPATH, "//li/div/p/span/span[1]/a")
         stop = url_elements.__len__()
         max = max - 1
