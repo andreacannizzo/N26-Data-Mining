@@ -170,7 +170,8 @@ def get_number_of_new_lines(browser):
     url_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
     start = 0
     stop = url_elements.__len__()
-    while True:
+    max = 20
+    while max > 0:
         print(start, stop)
         for i in range(start, stop):
             if get_last_url("N26_Data.csv") == url_elements[i].get_attribute("href"):
@@ -180,3 +181,4 @@ def get_number_of_new_lines(browser):
         start = stop - 1
         url_elements = browser.find_elements_by_xpath("//li/div/p/span/span[1]/a")
         stop = url_elements.__len__()
+        max = max - 1
