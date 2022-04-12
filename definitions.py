@@ -38,11 +38,11 @@ def logout(browser):
 def scroll_to_bottom(browser):
     try:
         button = WebDriverWait(browser, 10).until(
-            EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/section/div[5]/button")))
+            EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/section/div[4]/button")))
         while button.size != 0:
             try:
                 button = WebDriverWait(browser, 10).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/section/div[5]/button")))
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/section/div[4]/button")))
             except:
                 print("Sono arrivato alla fine")
             button.send_keys(Keys.RETURN)
@@ -55,11 +55,11 @@ def scroll_to_bottom_times(browser, times):
     i = times
     try:
         button = WebDriverWait(browser, 10).until(
-            EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/section/div[5]/button")))
+            EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/section/div[4]/button")))
         while button.size != 0 and (i > 0 or times == 0):
             try:
                 button = WebDriverWait(browser, 10).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/section/div[5]/button")))
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/section/div[4]/button")))
             except:
                 print("Sono arrivato alla fine")
             button.send_keys(Keys.RETURN)
