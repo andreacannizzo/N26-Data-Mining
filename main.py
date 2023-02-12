@@ -27,13 +27,14 @@ else:
 
 # register new data starting from the oldest to the newest
 for i in range(N_range-1, end, -1):
+    name = url_elements[i].text
     # open new tab, switch to new tab and load page
     browser.execute_script("window.open('');")
     url = url_elements[i].get_attribute("href")
     browser.switch_to.window(browser.window_handles[1])
     browser.get(url)
     # extract data
-    name = get_name(browser)  # string
+    # name = get_name(browser)  # string
     value = get_value(browser)  # float
     date = get_date(browser)  # datetime_object
     category = get_category(browser)  # string
@@ -50,7 +51,7 @@ for i in range(N_range-1, end, -1):
     # close new tab and go back to home page
     browser.close()
     browser.switch_to.window(browser.window_handles[0])
-    time.sleep(1)
+    time.sleep(1.5)
 
 logout(browser)
 browser.close()

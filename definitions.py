@@ -28,10 +28,10 @@ def login(browser, username_str, password_str):
 
 def logout(browser):
     person_logo = WebDriverWait(browser, 10).until(
-        EC.visibility_of_element_located((By.XPATH, "//*[@id='root']/div/header/div/div[2]/a[5]")))
+        EC.visibility_of_element_located((By.XPATH, "//*[@id='root']/div[1]/header/div/div[2]/a[5]")))
     person_logo.send_keys(Keys.RETURN)
     exit_logo = WebDriverWait(browser, 10).until(
-        EC.visibility_of_element_located((By.XPATH, "//*[@title='Esci']")))
+        EC.visibility_of_element_located((By.XPATH, "//*[@title='Disconnetti']")))
     exit_logo.send_keys(Keys.RETURN)
 
 
@@ -52,21 +52,18 @@ def scroll_to_bottom(browser):
 
 
 def scroll_to_bottom_times(browser, times):
-    i = times
+    browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(1)
     try:
-        button = WebDriverWait(browser, 10).until(
-            EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/section/div[4]/button")))
-        while button.size != 0 and (i > 0 or times == 0):
-            try:
-                button = WebDriverWait(browser, 10).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/section/div[4]/button")))
-            except:
-                print("Sono arrivato alla fine")
-            button.send_keys(Keys.RETURN)
+        for i in range(times):
+            button = WebDriverWait(browser, 10).until(
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/section/div[3]/button")))
+            button.click()
+            time.sleep(2)
             browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            i = i - 1
+            time.sleep(1)
     except:
-        print("Sono già arrivato alla fine")
+        print("Non trovo il tasto per scrollare in basso")
 
 
 def get_tags(browser):
@@ -74,8 +71,7 @@ def get_tags(browser):
     jointed_tags = ""
     try:
         tags_elements = WebDriverWait(browser, 2).until(
-            EC.visibility_of_all_elements_located((By.XPATH, "//*[@id='tags_container']/div[*]/a")))
-        # tags_elements = browser.find_elements_by_xpath("//*[@id='tags_container']/div[*]/a")
+            EC.visibility_of_all_elements_located((By.XPATH, "//*[@id='main']/div/div[*]/div[*]/a/span/div/span")))
         for i in range(tags_elements.__len__()):
             tags_lists.append(tags_elements[i].text)
 
@@ -97,10 +93,10 @@ def get_name(browser):
     try:
         if logo:
             name = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[2]/p"))).text
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[2]/div/div/div/h1"))).text
         else:
             name = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[1]/p"))).text
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[1]/div/div/div/h1"))).text
         return name
     except:
         return name
@@ -110,12 +106,12 @@ def get_value(browser):
     logo = True
     try:
         logo_element = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[1]/div/img")))
+                    EC.visibility_of_element_located((By.CLASS_NAME, "ap hs")))
     except:
         logo = False
     if logo:
-        amount = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[3]/p/span/span"))).text
+        amount = WebDriverWait(browser, 5).until(
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div[2]/div/div/p/span[1]/span"))).text
         amount = amount.replace('.', '')
         amount = amount.replace(',', '.')
         if '.' in amount:
@@ -124,8 +120,8 @@ def get_value(browser):
             value = re.findall("[-+]?\d+", amount)[0]
         value = float(value)
     else:
-        amount = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[2]/p/span/span"))).text
+        amount = WebDriverWait(browser, 10).until(
+            EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div/div/div/p/span[1]/span"))).text
         amount = amount.replace('.', '')
         amount = amount.replace(',', '.')
         if '.' in amount:
@@ -145,10 +141,10 @@ def get_date(browser):
         logo = False
     if logo:
         date_str = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[4]/span[1]"))).text
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div[2]/div/div/p/span[2]/span[2]"))).text
     else:
         date_str = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[3]/span"))).text
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div/div/div/p/span[2]/span[2]"))).text
     locale.setlocale(locale.LC_TIME, 'it_IT')
     date_str = date_str.split(sep=' ·', maxsplit=1)[0]
     datetime_object = datetime.strptime(date_str, '%A %d %B %Y, %H:%M')
@@ -156,9 +152,10 @@ def get_date(browser):
 
 
 def get_category(browser):
-    return WebDriverWait(browser, 1).until(
-            EC.visibility_of_element_located((By.XPATH,
-            "//*[@id='details_container']/div[2]/div/div[1]/div/div[2]/div/p[2]"))).text
+    category_element = WebDriverWait(browser, 1).until(
+                        EC.visibility_of_all_elements_located((By.XPATH,
+                        "//*[@id='main']/div/div[*]/div[2]/div/div[1]/div/div[2]/div/div/p[2]")))
+    return category_element[0].text
 
 
 def get_last_url(csv_name):
@@ -170,7 +167,7 @@ def get_number_of_new_lines(browser):
     url_elements = browser.find_elements(By.XPATH, "//li/div/p/span/span[1]/a")
     start = 0
     stop = url_elements.__len__()
-    max = 20
+    max = 5
     while max > 0:
         print(start, stop)
         for i in range(start, stop):
