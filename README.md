@@ -1,4 +1,4 @@
-# N26 Bank Personal Data Harvesting
+# N26 Bank Personal Data Mining
 This is a simple bot that enters in your N26 online banking and harvest all the transaction data. I created it because the .csv file you can donwload using the N26 App is leaving ouside a lot of interesting informations such as the precise HH:MM of the transactions and the tags. 
 
 ## Installation
