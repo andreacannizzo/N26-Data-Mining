@@ -158,9 +158,77 @@ def get_category(browser):
     return category_element[0].text
 
 
+def get_last_time(csv_name):
+    df = pd.read_csv(csv_name)
+    return df.tail(1).iloc[0, 0]
+
+
 def get_last_url(csv_name):
     df = pd.read_csv(csv_name)
     return df.tail(1).iloc[0, 1]
+
+
+def get_last_beneficiary(csv_name):
+    df = pd.read_csv(csv_name)
+    return df.tail(1).iloc[0, 2]
+
+
+def get_last_import(csv_name):
+    df = pd.read_csv(csv_name)
+    return df.tail(1).iloc[0, 3]
+
+
+def mine(browser):
+    url_elements = browser.find_elements(By.XPATH, "//li/div/p/span/span[1]/a")
+    i = 0
+    name = url_elements[i].text
+    browser.execute_script("window.open('');")
+    url = url_elements[i].get_attribute("href")
+    browser.switch_to.window(browser.window_handles[1])
+    browser.get(url)
+    value = get_value(browser)  # float
+    date = get_date(browser)  # datetime_object
+    category = get_category(browser)  # string
+    tags = get_tags(browser)  # string
+    browser.close()
+    browser.switch_to.window(browser.window_handles[0])
+    last_time = get_last_time('N26_Data.csv')
+    last_beneficiary = get_last_beneficiary('N26_Data.csv')
+    last_import = get_last_import('N26_Data.csv')
+
+    lines = pd.DataFrame({"Data": [last_time],
+                         "URL": [url],
+                         "Beneficiario": [last_beneficiary],
+                         "Importo": [last_import],
+                         "Categoria": ["category"],
+                         "Tags": ["tags"]})
+
+    while (str(date) != last_time) or (name != last_beneficiary) or (value != last_import):
+        line = pd.DataFrame({"Data": [date],
+                             "URL": [url],
+                             "Beneficiario": [name],
+                             "Importo": [value],
+                             "Categoria": [category],
+                             "Tags": [tags]})
+        lines = pd.concat([line, lines], ignore_index=True)
+        i = i + 1
+        if i == url_elements.__len__():
+            scroll_to_bottom_times(browser, 1)
+            url_elements = browser.find_elements(By.XPATH, "//li/div/p/span/span[1]/a")
+        name = url_elements[i].text
+        browser.execute_script("window.open('');")
+        url = url_elements[i].get_attribute("href")
+        browser.switch_to.window(browser.window_handles[1])
+        browser.get(url)
+        value = get_value(browser)  # float
+        date = get_date(browser)  # datetime_object
+        category = get_category(browser)  # string
+        tags = get_tags(browser)  # string
+        browser.close()
+        browser.switch_to.window(browser.window_handles[0])
+        time.sleep(1.5)
+
+    return lines
 
 
 def get_number_of_new_lines(browser):
