@@ -19,17 +19,15 @@ def login(browser, username_str, password_str):
         password.send_keys(password_str)
         submit = browser.find_element_by_xpath("//button")
         submit.submit()
-        for i in range(30):
-            print(f"You have {30-i} seconds to accept access")
+        for i in range(20):
+            print(f"You have {20-i} seconds to accept access")
             time.sleep(1)
     except:
         print("problem(s) while logging in")
 
 
 def logout(browser):
-    person_logo = WebDriverWait(browser, 10).until(
-        EC.visibility_of_element_located((By.XPATH, "//*[@id='root']/div[1]/header/div/div[2]/a[5]")))
-    person_logo.send_keys(Keys.RETURN)
+    browser.get('https://app.n26.com/account')
     exit_logo = WebDriverWait(browser, 10).until(
         EC.visibility_of_element_located((By.XPATH, "//*[@title='Disconnetti']")))
     exit_logo.send_keys(Keys.RETURN)
@@ -136,15 +134,15 @@ def get_date(browser):
     logo = True
     try:
         logo_element = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[1]/div/img")))
+                    EC.visibility_of_element_located((By.XPATH, "//*[@class='b e']")))
     except:
         logo = False
     if logo:
         date_str = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div[2]/div/div/p/span[2]/span[2]"))).text
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div[2]/div/div/p/span[2]"))).text
     else:
         date_str = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div/div/div/p/span[2]/span[2]"))).text
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div/div/div/p/span[2]"))).text
     locale.setlocale(locale.LC_TIME, 'it_IT')
     date_str = date_str.split(sep=' ·', maxsplit=1)[0]
     datetime_object = datetime.strptime(date_str, '%A %d %B %Y, %H:%M')
