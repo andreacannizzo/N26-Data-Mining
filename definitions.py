@@ -85,16 +85,16 @@ def get_name(browser):
     logo = True
     try:
         logo_element = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[1]/div/img")))
+                    EC.visibility_of_element_located((By.XPATH, "//*[@class='b e']")))
     except:
         logo = False
     try:
         if logo:
             name = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[2]/div/div/div/h1"))).text
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div[2]/div/div[1]/h1/p"))).text
         else:
             name = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='header_container']/div[1]/div/div/div/h1"))).text
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div/div/div[1]/h1/p"))).text
         return name
     except:
         return name
@@ -104,12 +104,12 @@ def get_value(browser):
     logo = True
     try:
         logo_element = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.CLASS_NAME, "ap hs")))
+                    EC.visibility_of_element_located((By.XPATH, "//*[@class='b e']")))
     except:
         logo = False
     if logo:
-        amount = WebDriverWait(browser, 5).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div[2]/div/div/p/span[1]/span"))).text
+        amount = WebDriverWait(browser, 5).until(#//*[@id="main"]/div/div[1]/div[2]/div/div[2]/section/div/div[1]/span
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div[2]/div/div[2]/section/div/div[1]/span"))).text
         amount = amount.replace('.', '')
         amount = amount.replace(',', '.')
         if '.' in amount:
@@ -119,7 +119,7 @@ def get_value(browser):
         value = float(value)
     else:
         amount = WebDriverWait(browser, 10).until(
-            EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div/div/div/p/span[1]/span"))).text
+            EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div/div/div[2]/section/div/div[1]/span"))).text
         amount = amount.replace('.', '')
         amount = amount.replace(',', '.')
         if '.' in amount:
@@ -139,10 +139,10 @@ def get_date(browser):
         logo = False
     if logo:
         date_str = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div[2]/div/div/p/span[2]"))).text
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div[2]/div/div[2]/section/div/div[2]/span"))).text
     else:
         date_str = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div/div/div/p/span[2]"))).text
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div/div/div[2]/section/div/div[2]/span"))).text
     locale.setlocale(locale.LC_TIME, 'it_IT')
     date_str = date_str.split(sep=' ·', maxsplit=1)[0]
     datetime_object = datetime.strptime(date_str, '%A %d %B %Y, %H:%M')
