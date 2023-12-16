@@ -11,13 +11,13 @@ import pandas as pd
 
 def login(browser, username_str, password_str):
     try:
-        username = browser.find_element_by_name('username')
+        username = browser.find_element("name", "username")
         username.clear()
         username.send_keys(username_str)
-        password = browser.find_element_by_name('password')
+        password = browser.find_element("name", "password")
         password.clear()
         password.send_keys(password_str)
-        submit = browser.find_element_by_xpath("//button")
+        submit = browser.find_element("xpath", "//button")
         submit.submit()
         for i in range(20):
             print(f"You have {20-i} seconds to accept access")
