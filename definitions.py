@@ -26,6 +26,13 @@ def login(browser, username_str, password_str):
         print("problem(s) while logging in")
 
 
+def chiudi_ad(browser):
+    try:
+        chiudi = browser.find_element("xpath", "//*[contains(text(),'Chiudi')]")
+        chiudi.submit()
+    except:
+        print("Initial ad not found and not closed")
+
 def logout(browser):
     browser.get('https://app.n26.com/account')
     exit_logo = WebDriverWait(browser, 10).until(
@@ -69,7 +76,7 @@ def get_tags(browser):
     jointed_tags = ""
     try:
         tags_elements = WebDriverWait(browser, 2).until(
-            EC.visibility_of_all_elements_located((By.XPATH, "//*[@id='main']/div/div[*]/div[*]/a/span/div/span")))
+            EC.visibility_of_all_elements_located((By.XPATH, "//*[@id='main']/div/div[4]/a[*]/div/span")))
         for i in range(tags_elements.__len__()):
             tags_lists.append(tags_elements[i].text)
 
@@ -85,7 +92,7 @@ def get_name(browser):
     logo = True
     try:
         logo_element = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@class='b e']")))
+                    EC.visibility_of_element_located((By.XPATH, "//*[@class='b q']")))
     except:
         logo = False
     try:
@@ -104,7 +111,7 @@ def get_value(browser):
     logo = True
     try:
         logo_element = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@class='b e']")))
+                    EC.visibility_of_element_located((By.XPATH, "//*[@class='b q']")))
     except:
         logo = False
     if logo:
@@ -133,16 +140,16 @@ def get_value(browser):
 def get_date(browser):
     logo = True
     try:
-        logo_element = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@class='b e']")))
+        logo_element = WebDriverWait(browser, 2).until(
+                    EC.visibility_of_element_located((By.XPATH, "//*[@class='b q']")))
     except:
         logo = False
     if logo:
         date_str = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div[2]/div/div[2]/section/div/div[2]/span"))).text
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div[2]/div/div[2]/section/div/div[2]/div/span/span/span"))).text
     else:
         date_str = WebDriverWait(browser, 1).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div/div/div[2]/section/div/div[2]/span"))).text
+                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/div/div[1]/div/div/div[2]/section/div/div[2]/div/span"))).text
     locale.setlocale(locale.LC_TIME, 'it_IT')
     date_str = date_str.split(sep=' ·', maxsplit=1)[0]
     datetime_object = datetime.strptime(date_str, '%A %d %B %Y, %H:%M')
@@ -183,6 +190,7 @@ def mine(browser):
     browser.execute_script("window.open('');")
     url = url_elements[i].get_attribute("href")
     browser.switch_to.window(browser.window_handles[1])
+    time.sleep(0.5)
     browser.get(url)
     value = get_value(browser)  # float
     date = get_date(browser)  # datetime_object
