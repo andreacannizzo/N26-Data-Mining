@@ -76,7 +76,7 @@ def get_tags(browser):
     jointed_tags = ""
     try:
         tags_elements = WebDriverWait(browser, 2).until(
-            EC.visibility_of_all_elements_located((By.XPATH, "//*[@id='main']/div/div[4]/a[*]/div/span")))
+            EC.visibility_of_all_elements_located((By.XPATH, "//*[@id='main']/div/div[*]/a[*]/div/span")))
         for i in range(tags_elements.__len__()):
             tags_lists.append(tags_elements[i].text)
 
