@@ -253,3 +253,43 @@ def get_number_of_new_lines(browser):
         url_elements = browser.find_elements(By.XPATH, "//li/div/p/span/span[1]/a")
         stop = url_elements.__len__()
         max = max - 1
+
+
+def tests(browser, csv_name, csvline2check):
+    test_passed = True
+    df = pd.read_csv(csv_name)
+    browser.execute_script("window.open('');")
+    browser.switch_to.window(browser.window_handles[1])
+    browser.get(df.iloc[csvline2check, 1])
+    test_value = get_value(browser)
+    test_date = get_date(browser)
+    test_category = get_category(browser)
+    test_tags = get_tags(browser)
+    target_value = df.iloc[csvline2check, 3]
+    target_date = df.iloc[csvline2check, 0]
+    target_category = df.iloc[csvline2check, 4]
+    target_tags = df.iloc[csvline2check, 5]
+    if test_value != target_value:
+        print(f"problem with value test {target_date} transaction: test_value = {test_value} != target_value = {target_value}")
+        test_passed = False
+    # else:
+    #     print(f"{target_date} -> test_value = {test_value} = target_value = {target_value} OK")
+    if test_date.__str__() != target_date:
+        print(f"problem with date test {target_date} transaction: test_date = {test_date} != target_date = {target_date}")
+        test_passed = False
+    # else:
+    #     print(f"{target_date} -> test_date = {test_date} = target_date = {target_date} OK")
+    if test_category != target_category:
+        print(f"problem with category test {target_date} transaction: test_category = {test_category} != target_category = {target_category}")
+        test_passed = False
+    # else:
+    #     print(f"{target_date} -> test_category = {test_category} = target_category = {target_category} OK")
+    if test_tags != target_tags:
+        print(f"problem with tags test {target_date} transaction: test_tags = {test_tags} != target_tags = {target_tags}")
+        test_passed = False
+    # else:
+    #     print(f"{target_date} -> test_tags = {test_tags} = target_tags = {target_tags} OK")
+    browser.close()
+    browser.switch_to.window(browser.window_handles[0])
+    return test_passed
+

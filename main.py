@@ -16,11 +16,26 @@ browser.get('https://app.n26.com/login')
 login(browser, username, password)
 # close initial N26 ad
 chiudi_ad(browser)
+# run tests to see if bot is updated to current website version and xPaths
+try:
+    if not tests(browser, 'N26_Data.csv', 2695):
+        exit()
+    if not tests(browser, 'N26_Data.csv', 2699):
+        exit()
+    if not tests(browser, 'N26_Data.csv', 2690):
+        exit()
+    if not tests(browser, 'N26_Data.csv', 2600):
+        exit()
+    if not tests(browser, 'N26_Data.csv', 1992):
+        exit()
+except:
+    print("\nALERT ----> tests failed, can not proceed with data mining <----")
 # get new lines to register
 new_lines = mine(browser)
 # drop last temp line
 new_lines = new_lines[:-1]
-# write on .csv file
-new_lines.to_csv('N26_Data.csv', index=False, header=False, mode='a')
+# write on .csv file only if there are new lines
+if new_lines.__len__() > 0:
+    new_lines.to_csv('N26_Data.csv', index=False, header=False, mode='a')
 logout(browser)
 browser.close()
