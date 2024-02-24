@@ -20,6 +20,8 @@ login(browser, username, password)
 # close initial N26 ad
 chiudi_ad(browser)
 # run tests to see if bot is updated to current website version and xPaths
+temp = pd.read_csv("N26_Data.csv", na_filter=False)
+last_row_of_df = temp.shape[0]-1
 try:
     if not tests(browser, 'N26_Data.csv', 2695):
         exit()
@@ -30,6 +32,8 @@ try:
     if not tests(browser, 'N26_Data.csv', 2600):
         exit()
     if not tests(browser, 'N26_Data.csv', 1992):
+        exit()
+    if not tests(browser, 'N26_Data.csv', last_row_of_df):
         exit()
 except:
     print("\nALERT ----> tests failed, can not proceed with data mining <----")
