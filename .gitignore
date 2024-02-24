@@ -134,3 +134,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 nb.ipynb
+labels.csv
+N26_Data Merged.csv
+N26_History_With_Tags.csv
