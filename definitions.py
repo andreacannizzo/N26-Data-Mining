@@ -202,12 +202,12 @@ def mine(browser):
     last_beneficiary = get_last_beneficiary('N26_Data.csv')
     last_import = get_last_import('N26_Data.csv')
 
-    lines = pd.DataFrame({"Data": [last_time],
-                         "URL": [url],
-                         "Beneficiario": [last_beneficiary],
-                         "Importo": [last_import],
-                         "Categoria": ["category"],
-                         "Tags": ["tags"]})
+    lines = pd.DataFrame({"Data": [],
+                          "URL": [],
+                          "Beneficiario": [],
+                          "Importo": [],
+                          "Categoria": [],
+                          "Tags": []})
 
     while (str(date) != last_time) or (name != last_beneficiary) or (value != last_import):
         line = pd.DataFrame({"Data": [date],

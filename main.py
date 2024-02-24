@@ -3,6 +3,7 @@ from definitions import *
 import chromedriver_autoinstaller
 from selenium import webdriver
 import pandas as pd
+from selenium.webdriver.chrome.service import Service
 
 # solve the certificate issue
 import ssl
@@ -10,7 +11,9 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 # download latest chromedriver and open a new browser window
 auto_chromedriver = chromedriver_autoinstaller.install()
-browser = webdriver.Chrome(auto_chromedriver)
+chrome_options = webdriver.ChromeOptions()
+service = Service(executable_path=auto_chromedriver)
+browser = webdriver.Chrome(service=service, options=chrome_options)
 # load n26 website and log in with inputs.py credentials
 browser.get('https://app.n26.com/login')
 login(browser, username, password)
