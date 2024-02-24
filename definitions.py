@@ -164,26 +164,39 @@ def get_category(browser):
 
 
 def get_last_time(csv_name):
-    df = pd.read_csv(csv_name)
+    df = pd.read_csv(csv_name, na_filter=False)
     return df.tail(1).iloc[0, 0]
 
 
 def get_last_url(csv_name):
-    df = pd.read_csv(csv_name)
+    df = pd.read_csv(csv_name, na_filter=False)
     return df.tail(1).iloc[0, 1]
 
 
 def get_last_beneficiary(csv_name):
-    df = pd.read_csv(csv_name)
+    df = pd.read_csv(csv_name, na_filter=False)
     return df.tail(1).iloc[0, 2]
 
 
 def get_last_import(csv_name):
-    df = pd.read_csv(csv_name)
+    df = pd.read_csv(csv_name, na_filter=False)
     return df.tail(1).iloc[0, 3]
 
 
-def mine(browser):
+def get_NewTag_string(tags, label_csv_name):
+    labels = pd.read_csv(label_csv_name, na_filter=False)
+    labels_list = labels["label"].to_list()
+
+    tags_in_Tags = tags.split('#')[1:]
+    intersection = set(tags_in_Tags) & set(labels_list)
+    if len(intersection) == 1:
+        return list(intersection)[0]
+    else:
+        print("Problem with row, tag not found in labels or inherent problem")
+        return 0
+
+
+def mine(browser, label_csv_name, csv_target_name):
     url_elements = browser.find_elements(By.XPATH, "//li/div/p/span/span[1]/a")
     i = 0
     name = url_elements[i].text
@@ -196,18 +209,20 @@ def mine(browser):
     date = get_date(browser)  # datetime_object
     category = get_category(browser)  # string
     tags = get_tags(browser)  # string
+    newtag = get_NewTag_string(tags, label_csv_name)
     browser.close()
     browser.switch_to.window(browser.window_handles[0])
-    last_time = get_last_time('N26_Data.csv')
-    last_beneficiary = get_last_beneficiary('N26_Data.csv')
-    last_import = get_last_import('N26_Data.csv')
+    last_time = get_last_time(csv_target_name)
+    last_beneficiary = get_last_beneficiary(csv_target_name)
+    last_import = get_last_import(csv_target_name)
 
     lines = pd.DataFrame({"Data": [],
                           "URL": [],
                           "Beneficiario": [],
                           "Importo": [],
                           "Categoria": [],
-                          "Tags": []})
+                          "Tags": [],
+                          "NewTags": []})
 
     while (str(date) != last_time) or (name != last_beneficiary) or (value != last_import):
         line = pd.DataFrame({"Data": [date],
@@ -215,7 +230,8 @@ def mine(browser):
                              "Beneficiario": [name],
                              "Importo": [value],
                              "Categoria": [category],
-                             "Tags": [tags]})
+                             "Tags": [tags],
+                             "NewTags": [newtag]})
         lines = pd.concat([line, lines], ignore_index=True)
         i = i + 1
         if i == url_elements.__len__():
@@ -230,6 +246,7 @@ def mine(browser):
         date = get_date(browser)  # datetime_object
         category = get_category(browser)  # string
         tags = get_tags(browser)  # string
+        newtag = get_NewTag_string(tags, label_csv_name)
         browser.close()
         browser.switch_to.window(browser.window_handles[0])
         time.sleep(1.5)
@@ -237,27 +254,27 @@ def mine(browser):
     return lines
 
 
-def get_number_of_new_lines(browser):
-    url_elements = browser.find_elements(By.XPATH, "//li/div/p/span/span[1]/a")
-    start = 0
-    stop = url_elements.__len__()
-    max = 5
-    while max > 0:
-        print(start, stop)
-        for i in range(start, stop):
-            if get_last_url("N26_Data.csv") == url_elements[i].get_attribute("href"):
-                return i
-        scroll_to_bottom_times(browser, 1)
-        time.sleep(1)
-        start = stop - 1
-        url_elements = browser.find_elements(By.XPATH, "//li/div/p/span/span[1]/a")
-        stop = url_elements.__len__()
-        max = max - 1
+# def get_number_of_new_lines(browser):
+#     url_elements = browser.find_elements(By.XPATH, "//li/div/p/span/span[1]/a")
+#     start = 0
+#     stop = url_elements.__len__()
+#     max = 5
+#     while max > 0:
+#         print(start, stop)
+#         for i in range(start, stop):
+#             if get_last_url("N26_Data.csv") == url_elements[i].get_attribute("href"):
+#                 return i
+#         scroll_to_bottom_times(browser, 1)
+#         time.sleep(1)
+#         start = stop - 1
+#         url_elements = browser.find_elements(By.XPATH, "//li/div/p/span/span[1]/a")
+#         stop = url_elements.__len__()
+#         max = max - 1
 
 
 def tests(browser, csv_name, csvline2check):
     test_passed = True
-    df = pd.read_csv(csv_name)
+    df = pd.read_csv(csv_name, na_filter=False)
     browser.execute_script("window.open('');")
     browser.switch_to.window(browser.window_handles[1])
     browser.get(df.iloc[csvline2check, 1])
