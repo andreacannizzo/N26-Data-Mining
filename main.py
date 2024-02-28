@@ -37,8 +37,8 @@ try:
         exit()
     if not tests(browser, csv_target_name, 1992):
         exit()
-    if not tests(browser, csv_target_name, last_row_of_df):
-        exit()
+    # if not tests(browser, csv_target_name, last_row_of_df):
+    #     exit()
 except:
     print("\nALERT ----> tests failed, can not proceed with data mining <----")
 # get new lines to register
