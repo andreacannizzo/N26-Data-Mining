@@ -111,6 +111,7 @@ celerybeat.pid
 .env
 .venv
 venv2
+test_terminal_push
 env/
 venv/
 ENV/
