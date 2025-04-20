@@ -61,9 +61,10 @@ def scroll_to_bottom_times(browser, times):
     time.sleep(1)
     try:
         for i in range(times):
-            button = WebDriverWait(browser, 10).until(
-                    EC.visibility_of_element_located((By.XPATH, "//*[@id='main']/section/div[3]/button")))
-            button.click()
+            load_more_button = WebDriverWait(browser, 10).until(
+                EC.element_to_be_clickable((By.XPATH, "//button[.//span[contains(text(), 'Carica di più')]]"))
+            )
+            load_more_button.click()
             time.sleep(2)
             browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             time.sleep(1)
@@ -197,19 +198,33 @@ def get_NewTag_string(tags, label_csv_name):
 
 
 def mine(browser, label_csv_name, csv_target_name):
-    url_elements = browser.find_elements(By.XPATH, "//li/div/p/span/span[1]/a")
+    li_xpath = "//li[contains(@class, 'q1hbnko')]"
+    url_elements = browser.find_elements(By.XPATH, li_xpath)
     i = 0
-    name = url_elements[i].text
+    url_elem = url_elements[i]
+    title_parts = url_elem.find_elements(By.XPATH, ".//span[contains(@class, 'q1hbnk7s')]")
+    name = title_parts[0].text
     browser.execute_script("window.open('');")
-    url = url_elements[i].get_attribute("href")
+    url = url_elem.find_element(By.XPATH, ".//a[@data-testid='feed-timeline-item']").get_attribute("href")
     browser.switch_to.window(browser.window_handles[1])
     time.sleep(0.5)
     browser.get(url)
-    value = get_value(browser)  # float
-    date = get_date(browser)  # datetime_object
-    category = get_category(browser)  # string
-    tags = get_tags(browser)  # string
-    newtag = get_NewTag_string(tags, label_csv_name)
+    try:
+        value = get_value(browser)  # float
+        date = get_date(browser)  # datetime_object
+        category = get_category(browser)  # string
+        tags = get_tags(browser)  # string
+        newtag = get_NewTag_string(tags, label_csv_name)
+        print(i, date, name, value, category, tags, newtag)
+    except:
+        print("Couldn't retrieve values from transaction's tab", url)
+        input("Press Enter to try again and continue...")
+        value = get_value(browser)  # float
+        date = get_date(browser)  # datetime_object
+        category = get_category(browser)  # string
+        tags = get_tags(browser)  # string
+        newtag = get_NewTag_string(tags, label_csv_name)
+        print(i, date, name, value, category, tags, newtag)
     browser.close()
     browser.switch_to.window(browser.window_handles[0])
     last_time = get_last_time(csv_target_name)
@@ -236,17 +251,30 @@ def mine(browser, label_csv_name, csv_target_name):
         i = i + 1
         if i == url_elements.__len__():
             scroll_to_bottom_times(browser, 1)
-            url_elements = browser.find_elements(By.XPATH, "//li/div/p/span/span[1]/a")
-        name = url_elements[i].text
+            url_elements = browser.find_elements(By.XPATH, li_xpath)
+        url_elem = url_elements[i]
+        title_parts = url_elem.find_elements(By.XPATH, ".//span[contains(@class, 'q1hbnk7s')]")
+        name = title_parts[0].text
         browser.execute_script("window.open('');")
-        url = url_elements[i].get_attribute("href")
+        url = url_elem.find_element(By.XPATH, ".//a[@data-testid='feed-timeline-item']").get_attribute("href")
         browser.switch_to.window(browser.window_handles[1])
         browser.get(url)
-        value = get_value(browser)  # float
-        date = get_date(browser)  # datetime_object
-        category = get_category(browser)  # string
-        tags = get_tags(browser)  # string
-        newtag = get_NewTag_string(tags, label_csv_name)
+        try:
+            value = get_value(browser)  # float
+            date = get_date(browser)  # datetime_object
+            category = get_category(browser)  # string
+            tags = get_tags(browser)  # string
+            newtag = get_NewTag_string(tags, label_csv_name)
+            print(i, date, name, value, category, tags, newtag)
+        except:
+            print("Couldn't retrieve values from transaction's tab", url)
+            input("Press Enter to try again and continue...")
+            value = get_value(browser)  # float
+            date = get_date(browser)  # datetime_object
+            category = get_category(browser)  # string
+            tags = get_tags(browser)  # string
+            newtag = get_NewTag_string(tags, label_csv_name)
+            print(i, date, name, value, category, tags, newtag)
         browser.close()
         browser.switch_to.window(browser.window_handles[0])
         time.sleep(1.5)

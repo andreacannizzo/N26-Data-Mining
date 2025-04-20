@@ -23,6 +23,8 @@ browser.get('https://app.n26.com/login')
 login(browser, username, password)
 # close initial N26 ad
 chiudi_ad(browser)
+# go to transactions page
+browser.get('https://app.n26.com/feed/transactions')
 # run tests to see if bot is updated to current website version and xPaths
 temp = pd.read_csv(csv_target_name, na_filter=False)
 last_row_of_df = temp.shape[0]-1
