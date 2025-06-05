@@ -134,9 +134,9 @@ def get_value(browser) -> float:
         amount = amount.replace('.', '')
         amount = amount.replace(',', '.')
         if '.' in amount:
-            value = re.findall("[-+]?\d+\.\d+", amount)[0]
+            value = re.findall(r"[-+]?\d+\.\d+", amount)[0]
         else:
-            value = re.findall("[-+]?\d+", amount)[0]
+            value = re.findall(r"[-+]?\d+", amount)[0]
         value = float(value)
     else:
         amount = WebDriverWait(browser, 10).until(
@@ -144,9 +144,9 @@ def get_value(browser) -> float:
         amount = amount.replace('.', '')
         amount = amount.replace(',', '.')
         if '.' in amount:
-            value = re.findall("[-+]?\d+\.\d+", amount)[0]
+            value = re.findall(r"[-+]?\d+\.\d+", amount)[0]
         else:
-            value = re.findall("[-+]?\d+", amount)[0]
+            value = re.findall(r"[-+]?\d+", amount)[0]
         value = float(value)
     return value
 

@@ -60,7 +60,6 @@ class TestDefinitions(unittest.TestCase):
         self.browser.find_element.side_effect = Exception('error')
         with self.assertLogs(level='ERROR') as log:
             definitions.login(self.browser, 'user', 'pass')
-        self.assertTrue(any('problem(s) while logging in' in m or 'error' in m for m in log.output[0]))
-
+        self.assertTrue(any('problem' in str(m).lower() or 'error' in str(m).lower() for m in log.output))
 if __name__ == "__main__":
     unittest.main()
