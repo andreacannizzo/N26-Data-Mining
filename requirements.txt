@@ -29,3 +29,8 @@ fpdf2
 reportlab
 requests
 schedule
+# Advanced Analytics dependencies
+scikit-learn>=1.0.0
+statsmodels>=0.13.0
+plotly>=5.0.0
+flask>=2.0.0

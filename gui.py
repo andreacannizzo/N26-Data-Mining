@@ -240,6 +240,26 @@ class N26Gui(QWidget):
         self.btn_report.clicked.connect(self.show_report)
         main_layout.addWidget(self.btn_report)
 
+        # Advanced Analytics Dashboard - NUOVO!
+        self.btn_advanced_analytics = QPushButton('📊 Advanced Analytics Dashboard')
+        self.btn_advanced_analytics.setStyleSheet("""
+            QPushButton {
+                background-color: #4285f4;
+                color: #fff;
+                border: none;
+                border-radius: 15px;
+                padding: 12px 25px;
+                font-size: 16px;
+                font-weight: bold;
+                margin: 5px;
+            }
+            QPushButton:hover {
+                background-color: #3367d6;
+            }
+        """)
+        self.btn_advanced_analytics.clicked.connect(self.open_advanced_analytics)
+        main_layout.addWidget(self.btn_advanced_analytics)
+
         # Impostazioni avanzate
         self.btn_settings = QPushButton('Impostazioni avanzate')
         self.btn_settings.clicked.connect(self.show_settings)
@@ -616,6 +636,41 @@ class N26Gui(QWidget):
             plt.show()
         except Exception as e:
             QMessageBox.critical(self, 'Errore', str(e))
+
+    def open_advanced_analytics(self):
+        """Apre dashboard Advanced Analytics"""
+        try:
+            # Import del modulo analytics dashboard
+            from analytics_dashboard import AdvancedAnalyticsDashboard
+            
+            # Verifica se esiste file CSV
+            if not os.path.exists(self.csv_path):
+                reply = QMessageBox.question(
+                    self, 
+                    'File CSV mancante', 
+                    f'Il file {self.csv_path} non esiste.\n\nVuoi prima eseguire il mining N26 per generare i dati?',
+                    QMessageBox.Yes | QMessageBox.No
+                )
+                if reply == QMessageBox.Yes:
+                    self.run_mining()
+                    return
+                else:
+                    return
+            
+            # Apri dashboard avanzato
+            self.analytics_dashboard = AdvancedAnalyticsDashboard(self.csv_path)
+            self.analytics_dashboard.show()
+            
+            self.status_label.setText('🚀 Advanced Analytics Dashboard aperto!')
+            
+        except ImportError:
+            QMessageBox.critical(
+                self, 
+                'Modulo non trovato', 
+                'Modulo Advanced Analytics non trovato.\nAssicurati che analytics_dashboard.py sia presente nella directory.'
+            )
+        except Exception as e:
+            QMessageBox.critical(self, 'Errore', f'Impossibile aprire Advanced Analytics: {e}')
 
     def full_text_search(self):
         # Ricerca full-text su tutte le colonne

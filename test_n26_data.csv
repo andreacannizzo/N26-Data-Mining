@@ -1,0 +1,15 @@
+Data,Importo,Categoria,Beneficiario,Descrizione
+2024-01-01,2800.0,Stipendio,Azienda XYZ,Stipendio mensile
+2024-02-01,2800.0,Stipendio,Azienda XYZ,Stipendio mensile
+2024-03-01,2800.0,Stipendio,Azienda XYZ,Stipendio mensile
+2024-04-01,2800.0,Stipendio,Azienda XYZ,Stipendio mensile
+2024-05-01,2800.0,Stipendio,Azienda XYZ,Stipendio mensile
+2024-06-01,2800.0,Stipendio,Azienda XYZ,Stipendio mensile
+2024-01-05,-45.2,Alimentari,Supermercato,Spesa
+2024-01-10,-25.5,Trasporti,ATM,Abbonamento
+2024-01-15,-120.0,Utenze,Enel,Bolletta
+2024-02-03,-52.3,Alimentari,Supermercato,Spesa
+2024-02-12,-89.99,Intrattenimento,Amazon,Acquisti
+2024-03-01,-200.0,Casa,IKEA,Mobili
+2024-04-05,-67.4,Alimentari,Supermercato,Spesa
+2024-05-10,-156.8,Intrattenimento,Weekend,Viaggio

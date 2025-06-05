@@ -1,0 +1,39 @@
+{
+  "savings_monthly": 300.0,
+  "emergency_fund": {
+    "target": 5000,
+    "description": "Fondo di emergenza",
+    "created_date": "2025-06-05T19:55:43.619314"
+  },
+  "debt_reduction": 200.0,
+  "investment_monthly": 150.0,
+  "vacation_fund": 2000.0,
+  "max_dining_out": 200.0,
+  "max_shopping": 300.0,
+  "created_date": "2025-06-05T19:43:54.182498",
+  "test_goal": {
+    "target": 500,
+    "description": "Test goal description",
+    "created_date": "2025-06-05T19:55:35.471071"
+  },
+  "risparmio_mensile": {
+    "target": 600,
+    "description": "Risparmio mensile target",
+    "created_date": "2025-06-05T19:55:43.618812"
+  },
+  "spese_alimentari": {
+    "target": 250,
+    "description": "Budget alimentari mensile",
+    "created_date": "2025-06-05T19:55:43.619109"
+  },
+  "investimenti": {
+    "target": 300,
+    "description": "Investimenti mensili",
+    "created_date": "2025-06-05T19:55:43.619555"
+  },
+  "test": {
+    "target": 100,
+    "description": "Test goal",
+    "created_date": "2025-06-05T20:21:50.246237"
+  }
+}
