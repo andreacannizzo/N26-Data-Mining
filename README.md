@@ -5,6 +5,14 @@ I hope you'll enjoy it.
 
 ## Installation
 - clone the repository
+- **SETUP AUTOMATICO (Raccomandato):**
+```bash
+$ ./setup.sh          # Configura inputs.py
+$ python health_check.py  # Verifica sistema  
+$ ./start_gui.sh       # Avvia GUI
+```
+
+- **Setup manuale:**
 - create and activate a virtual environment in the cloned directory (for reference [venv](https://towardsdatascience.com/virtual-environments-104c62d48c54))
 ```bash
 $ python3 -m venv venv/
@@ -15,6 +23,10 @@ $ source venv/bin/activate
 $ pip install -r requirements.txt
 ```
 - change the inputs_example.py file accordingly and rename it to inputs.py
+```bash
+$ cp inputs_example.py inputs.py
+# Edit inputs.py with your N26 credentials
+```
 
 ## Usage
 

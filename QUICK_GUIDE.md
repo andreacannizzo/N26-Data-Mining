@@ -2,14 +2,32 @@
 
 ## 🚀 Avvio Veloce
 
-### Primo Utilizzo
+### ⚡ Setup Ultra-Rapido (3 comandi)
+```bash
+# 1. Configurazione iniziale
+./setup.sh
+
+# 2. Test sistema (opzionale)
+./test_system.sh
+
+# 3. Avvio GUI
+./start_gui.sh
+```
+
+### 🔧 Primo Utilizzo Dettagliato
 1. **Configura il file inputs.py**
    ```bash
-   cp inputs_example.py inputs.py
-   # Modifica inputs.py con le tue credenziali N26
+   ./setup.sh
+   # Poi modifica inputs.py con le tue credenziali N26
    ```
 
-2. **Avvia l'interfaccia grafica**
+2. **Verifica sistema (opzionale)**
+   ```bash
+   python health_check.py    # Diagnostica completa
+   ./test_system.sh          # Test rapido
+   ```
+
+3. **Avvia l'interfaccia grafica**
    ```bash
    ./start_gui.sh
    ```
