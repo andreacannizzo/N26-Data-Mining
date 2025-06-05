@@ -4,6 +4,13 @@ inputs.py
 N26_Data.csv
 .DS_Store
 
+# GUI and Config Files
+config_local.ini
+*.log
+exports/
+reports/
+venv/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

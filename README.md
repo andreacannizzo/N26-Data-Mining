@@ -17,10 +17,28 @@ $ pip install -r requirements.txt
 - change the inputs_example.py file accordingly and rename it to inputs.py
 
 ## Usage
+
+### Modalità Command Line
 ```bash
 $ python3 main.py
 ```
 than accept the 2AF request within 30 seconds. It will open a chrome driver browser and start gathering data in a file called N26_Data.csv.
+
+### Modalità GUI (Interfaccia Grafica)
+Per utilizzare l'interfaccia grafica avanzata:
+```bash
+$ python3 gui.py
+```
+
+La GUI offre funzionalità avanzate tra cui:
+- **Dashboard Riepilogativa**: Visualizzazione immediata di saldo, spese mensili e transazioni recenti
+- **Filtri Avanzati**: Filtro per data, beneficiario, categoria e importo
+- **Grafici Interattivi**: Grafici a torta per categorie, grafici a barre per spese mensili e beneficiari principali
+- **Esportazione Multipla**: Esportazione in CSV, Excel, JSON, PDF e PNG
+- **Automazioni**: Invio report via email, notifiche Telegram, esportazioni programmate
+- **Ricerca Full-Text**: Ricerca avanzata nelle descrizioni delle transazioni
+- **Analisi Predittiva**: Previsioni basate sui pattern di spesa
+- **Stampa Diretta**: Stampa report direttamente dall'applicazione
 
 ## Configurazione avanzata
 
