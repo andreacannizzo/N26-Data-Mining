@@ -3,7 +3,7 @@
   "emergency_fund": {
     "target": 5000,
     "description": "Fondo di emergenza",
-    "created_date": "2025-06-05T19:55:43.619314"
+    "created_date": "2025-06-05T20:50:17.224043"
   },
   "debt_reduction": 200.0,
   "investment_monthly": 150.0,
@@ -14,22 +14,22 @@
   "test_goal": {
     "target": 500,
     "description": "Test goal description",
-    "created_date": "2025-06-05T19:55:35.471071"
+    "created_date": "2025-06-05T20:50:33.893719"
   },
   "risparmio_mensile": {
     "target": 600,
     "description": "Risparmio mensile target",
-    "created_date": "2025-06-05T19:55:43.618812"
+    "created_date": "2025-06-05T20:50:17.223174"
   },
   "spese_alimentari": {
     "target": 250,
     "description": "Budget alimentari mensile",
-    "created_date": "2025-06-05T19:55:43.619109"
+    "created_date": "2025-06-05T20:50:17.223750"
   },
   "investimenti": {
     "target": 300,
     "description": "Investimenti mensili",
-    "created_date": "2025-06-05T19:55:43.619555"
+    "created_date": "2025-06-05T20:50:17.224270"
   },
   "test": {
     "target": 100,

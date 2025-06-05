@@ -1,39 +1,37 @@
 {
-  "timestamp": "2025-06-05T19:55:43.636580",
+  "timestamp": "2025-06-05T20:50:17.243829",
   "period": "2024-01 to 2024-06",
-  "total_transactions": 88,
-  "financial_score": 61.7,
+  "total_transactions": 84,
+  "financial_score": 71.7,
   "kpis": {
-    "periodo_analisi": "2023-06-25 - 2024-06-24",
+    "periodo_analisi": "2023-06-26 - 2024-06-25",
     "reddito_totale": 17350.0,
-    "spese_totali": 8399.11,
-    "saldo_netto": 8950.89,
-    "savings_rate": 51.59,
-    "burn_rate": 699.93,
-    "runway_months": 24.8,
-    "abbigliamento_ratio": 7.62,
-    "abbigliamento_amount": 1322.88,
-    "alimentari_ratio": 3.51,
-    "alimentari_amount": 608.49,
-    "casa_ratio": 22.13,
-    "casa_amount": 3840.19,
-    "intrattenimento_ratio": 3.41,
-    "intrattenimento_amount": 592.26,
-    "salute_ratio": 3.24,
-    "salute_amount": 561.47,
-    "trasporti_ratio": 2.61,
-    "trasporti_amount": 452.59,
-    "utenze_ratio": 5.89,
-    "utenze_amount": 1021.23,
-    "trend_spese": 15.25,
-    "volatilita_spese": 65.87,
+    "spese_totali": 5405.62,
+    "saldo_netto": 11944.38,
+    "savings_rate": 68.84,
+    "burn_rate": 450.47,
+    "runway_months": 38.5,
+    "abbigliamento_ratio": 6.69,
+    "abbigliamento_amount": 1161.39,
+    "alimentari_ratio": 4.54,
+    "alimentari_amount": 787.7,
+    "intrattenimento_ratio": 6.17,
+    "intrattenimento_amount": 1069.99,
+    "salute_ratio": 2.16,
+    "salute_amount": 375.2,
+    "trasporti_ratio": 2.52,
+    "trasporti_amount": 437.42,
+    "utenze_ratio": 9.07,
+    "utenze_amount": 1573.92,
+    "trend_spese": 5.09,
+    "volatilita_spese": 38.3,
     "mesi_analizzati": 6
   },
   "goals": {
     "savings_progress": {
       "target": 300.0,
-      "actual": -1499.48,
-      "progress_pct": -499.83,
+      "actual": -597.4,
+      "progress_pct": -199.13,
       "status": "in_progress"
     },
     "max_dining_out_progress": {
@@ -53,45 +51,45 @@
   },
   "benchmarks": {
     "savings_rate": {
-      "user_value": 51.59,
+      "user_value": 68.84,
       "benchmark": 8.2,
-      "difference": 43.39,
-      "difference_pct": 529.15,
+      "difference": 60.64,
+      "difference_pct": 739.51,
       "status": "above"
     },
     "alimentari_ratio": {
-      "user_value": 3.51,
+      "user_value": 4.54,
       "benchmark": 15.0,
-      "difference": -11.49,
-      "difference_pct": -76.6,
+      "difference": -10.46,
+      "difference_pct": -69.73,
       "status": "below"
     },
     "trasporti_ratio": {
-      "user_value": 2.61,
+      "user_value": 2.52,
       "benchmark": 12.0,
-      "difference": -9.39,
-      "difference_pct": -78.25,
+      "difference": -9.48,
+      "difference_pct": -79.0,
       "status": "below"
     },
     "intrattenimento_ratio": {
-      "user_value": 3.41,
+      "user_value": 6.17,
       "benchmark": 8.0,
-      "difference": -4.59,
-      "difference_pct": -57.38,
+      "difference": -1.83,
+      "difference_pct": -22.88,
       "status": "below"
     },
     "burn_rate": {
-      "user_value": 699.93,
+      "user_value": 450.47,
       "benchmark": 1450.0,
-      "difference": -750.07,
-      "difference_pct": -51.73,
+      "difference": -999.53,
+      "difference_pct": -68.93,
       "status": "below"
     }
   },
   "summary": {
     "total_income": 17350.0,
-    "total_expenses": 8399.109999999999,
-    "net_savings": 8950.890000000003,
-    "avg_transaction": 101.71465909090912
+    "total_expenses": 5405.620000000001,
+    "net_savings": 11944.380000000001,
+    "avg_transaction": 142.19500000000002
   }
 }

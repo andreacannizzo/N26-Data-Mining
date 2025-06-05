@@ -1,89 +1,85 @@
 Data,Importo,Categoria,Beneficiario,Descrizione
 2024-01-01,2850.0,Stipendio,AZIENDA TECH SRL,Stipendio mensile
-2024-01-06,-41.26,Utenze,VODAFONE,Telefono + Internet
-2024-01-07,-47.92,Alimentari,CARREFOUR,Spesa quotidiana
-2024-01-08,-72.41,Alimentari,ESSELUNGA,Spesa grande
-2024-01-09,-104.06,Utenze,ENEL ENERGIA,Bolletta elettrica
-2024-01-11,-34.04,Salute,FARMACIA,Medicinali
-2024-01-12,-103.89,Abbigliamento,ZARA,Vestiti primavera
-2024-01-13,-84.88,Salute,STUDIO MEDICO,Visita specialistica
-2024-01-14,-377.79,Casa,MEDIAWORLD,Elettrodomestici
-2024-01-15,-79.66,Alimentari,COOP,Spesa settimanale
-2024-01-23,-259.91,Casa,IKEA,Mobili cucina
-2024-01-23,-114.47,Abbigliamento,NIKE,Scarpe running
-2024-01-24,-62.62,Casa,LEROY MERLIN,Bricolage
-2024-01-26,-90.46,Utenze,HERA GAS,Bolletta gas
+2024-01-02,-129.29,Abbigliamento,NIKE,Scarpe running
+2024-01-05,-132.81,Utenze,ENEL ENERGIA,Bolletta elettrica
+2024-01-05,-15.98,Trasporti,UBER,Corsa centro
+2024-01-07,-41.99,Utenze,VODAFONE,Telefono + Internet
+2024-01-07,-64.25,Trasporti,ENI,Rifornimento auto
+2024-01-19,-103.75,Utenze,HERA GAS,Bolletta gas
+2024-01-19,-97.07,Abbigliamento,ZARA,Vestiti primavera
+2024-01-22,-31.81,Trasporti,ATM MILANO,Abbonamento mensile
 2024-01-31,2850.0,Stipendio,AZIENDA TECH SRL,Stipendio mensile
-2024-02-01,-102.12,Abbigliamento,ZARA,Vestiti primavera
-2024-02-02,-87.47,Salute,STUDIO MEDICO,Visita specialistica
-2024-02-02,-137.25,Abbigliamento,NIKE,Scarpe running
-2024-02-03,-23.96,Salute,FARMACIA,Medicinali
-2024-02-05,-96.18,Utenze,HERA GAS,Bolletta gas
-2024-02-19,-128.34,Utenze,ENEL ENERGIA,Bolletta elettrica
-2024-02-25,-37.23,Utenze,VODAFONE,Telefono + Internet
+2024-02-03,-42.55,Utenze,VODAFONE,Telefono + Internet
+2024-02-08,-23.97,Salute,FARMACIA,Medicinali
+2024-02-09,-11.06,Intrattenimento,SPOTIFY,Musica
+2024-02-12,-71.59,Alimentari,COOP,Spesa settimanale
+2024-02-13,-130.92,Utenze,ENEL ENERGIA,Bolletta elettrica
+2024-02-14,-96.55,Utenze,HERA GAS,Bolletta gas
+2024-02-17,-38.23,Alimentari,CARREFOUR,Spesa quotidiana
+2024-02-17,-140.78,Intrattenimento,AMAZON PRIME,Shopping online
+2024-02-20,-92.35,Abbigliamento,ZARA,Vestiti primavera
+2024-02-23,-13.89,Intrattenimento,NETFLIX,Streaming
+2024-02-24,-81.15,Alimentari,ESSELUNGA,Spesa grande
+2024-02-24,-88.63,Salute,STUDIO MEDICO,Visita specialistica
+2024-02-24,-142.56,Abbigliamento,NIKE,Scarpe running
+2024-02-26,-22.36,Intrattenimento,CINEMA,Film weekend
 2024-03-01,2850.0,Stipendio,AZIENDA TECH SRL,Stipendio mensile
-2024-03-02,-454.8,Casa,MEDIAWORLD,Elettrodomestici
-2024-03-02,-78.57,Abbigliamento,ZARA,Vestiti primavera
-2024-03-02,-32.97,Trasporti,ATM MILANO,Abbonamento mensile
-2024-03-05,-65.26,Alimentari,COOP,Spesa settimanale
-2024-03-05,-67.82,Casa,LEROY MERLIN,Bricolage
-2024-03-12,-202.84,Casa,IKEA,Mobili cucina
-2024-03-17,-114.02,Abbigliamento,NIKE,Scarpe running
-2024-03-20,-78.19,Salute,STUDIO MEDICO,Visita specialistica
-2024-03-22,-27.52,Salute,FARMACIA,Medicinali
-2024-03-26,-70.08,Trasporti,ENI,Rifornimento auto
-2024-03-26,-13.15,Trasporti,UBER,Corsa centro
-2024-03-27,-86.94,Alimentari,ESSELUNGA,Spesa grande
-2024-03-27,-49.16,Alimentari,CARREFOUR,Spesa quotidiana
+2024-03-04,-125.44,Abbigliamento,NIKE,Scarpe running
+2024-03-08,-14.89,Intrattenimento,NETFLIX,Streaming
+2024-03-09,-16.27,Trasporti,UBER,Corsa centro
+2024-03-09,-46.93,Utenze,VODAFONE,Telefono + Internet
+2024-03-10,-99.27,Salute,STUDIO MEDICO,Visita specialistica
+2024-03-10,-30.79,Salute,FARMACIA,Medicinali
+2024-03-11,-9.06,Intrattenimento,SPOTIFY,Musica
+2024-03-12,-176.33,Intrattenimento,AMAZON PRIME,Shopping online
+2024-03-12,-53.9,Trasporti,ENI,Rifornimento auto
+2024-03-13,-119.29,Utenze,ENEL ENERGIA,Bolletta elettrica
+2024-03-19,-96.46,Abbigliamento,ZARA,Vestiti primavera
+2024-03-20,-48.43,Alimentari,CARREFOUR,Spesa quotidiana
+2024-03-20,-75.07,Utenze,HERA GAS,Bolletta gas
+2024-03-22,-77.84,Alimentari,COOP,Spesa settimanale
+2024-03-24,-21.85,Intrattenimento,CINEMA,Film weekend
+2024-03-25,-32.18,Trasporti,ATM MILANO,Abbonamento mensile
+2024-03-26,-90.73,Alimentari,ESSELUNGA,Spesa grande
 2024-03-31,3100.0,Stipendio,AZIENDA TECH SRL,Stipendio mensile
-2024-04-01,-63.97,Casa,LEROY MERLIN,Bricolage
-2024-04-04,-34.78,Trasporti,ATM MILANO,Abbonamento mensile
-2024-04-05,-10.63,Intrattenimento,SPOTIFY,Musica
-2024-04-06,-54.72,Alimentari,COOP,Spesa settimanale
-2024-04-07,-99.88,Abbigliamento,ZARA,Vestiti primavera
-2024-04-08,-53.24,Trasporti,ENI,Rifornimento auto
-2024-04-09,-12.44,Intrattenimento,NETFLIX,Streaming
-2024-04-10,-229.29,Casa,IKEA,Mobili cucina
-2024-04-11,-82.42,Salute,STUDIO MEDICO,Visita specialistica
-2024-04-15,-21.95,Intrattenimento,CINEMA,Film weekend
-2024-04-19,-48.02,Alimentari,CARREFOUR,Spesa quotidiana
-2024-04-20,-31.13,Salute,FARMACIA,Medicinali
-2024-04-20,-142.15,Intrattenimento,AMAZON PRIME,Shopping online
-2024-04-20,-143.21,Abbigliamento,NIKE,Scarpe running
-2024-04-21,-12.88,Trasporti,UBER,Corsa centro
-2024-04-24,-509.3,Casa,MEDIAWORLD,Elettrodomestici
-2024-04-27,-104.4,Alimentari,ESSELUNGA,Spesa grande
+2024-04-01,-107.63,Abbigliamento,ZARA,Vestiti primavera
+2024-04-01,-97.17,Utenze,HERA GAS,Bolletta gas
+2024-04-02,-81.3,Alimentari,ESSELUNGA,Spesa grande
+2024-04-02,-11.65,Intrattenimento,SPOTIFY,Musica
+2024-04-03,-14.07,Trasporti,UBER,Corsa centro
+2024-04-08,-29.18,Intrattenimento,CINEMA,Film weekend
+2024-04-11,-36.05,Alimentari,CARREFOUR,Spesa quotidiana
+2024-04-14,-61.73,Trasporti,ENI,Rifornimento auto
+2024-04-14,-14.26,Intrattenimento,NETFLIX,Streaming
+2024-04-14,-163.46,Intrattenimento,AMAZON PRIME,Shopping online
+2024-04-15,-75.17,Alimentari,COOP,Spesa settimanale
+2024-04-16,-126.54,Abbigliamento,NIKE,Scarpe running
+2024-04-17,-110.95,Utenze,ENEL ENERGIA,Bolletta elettrica
+2024-04-22,-39.03,Utenze,VODAFONE,Telefono + Internet
+2024-04-27,-38.76,Trasporti,ATM MILANO,Abbonamento mensile
 2024-04-30,2850.0,Stipendio,AZIENDA TECH SRL,Stipendio mensile
-2024-05-01,-61.75,Casa,LEROY MERLIN,Bricolage
-2024-05-05,-23.91,Salute,FARMACIA,Medicinali
-2024-05-05,-47.8,Utenze,VODAFONE,Telefono + Internet
-2024-05-07,-20.95,Intrattenimento,CINEMA,Film weekend
-2024-05-08,-87.95,Salute,STUDIO MEDICO,Visita specialistica
-2024-05-09,-518.97,Casa,MEDIAWORLD,Elettrodomestici
-2024-05-09,-148.96,Abbigliamento,NIKE,Scarpe running
-2024-05-12,-99.14,Abbigliamento,ZARA,Vestiti primavera
-2024-05-16,-264.9,Casa,IKEA,Mobili cucina
-2024-05-20,-11.06,Intrattenimento,SPOTIFY,Musica
-2024-05-20,-13.24,Intrattenimento,NETFLIX,Streaming
-2024-05-21,-76.66,Trasporti,ENI,Rifornimento auto
-2024-05-23,-14.47,Trasporti,UBER,Corsa centro
-2024-05-23,-33.12,Trasporti,ATM MILANO,Abbonamento mensile
-2024-05-24,-83.23,Utenze,HERA GAS,Bolletta gas
-2024-05-24,-134.45,Utenze,ENEL ENERGIA,Bolletta elettrica
-2024-05-27,-177.42,Intrattenimento,AMAZON PRIME,Shopping online
+2024-05-02,-15.0,Trasporti,UBER,Corsa centro
+2024-05-02,-35.43,Trasporti,ATM MILANO,Abbonamento mensile
+2024-05-05,-32.45,Salute,FARMACIA,Medicinali
+2024-05-05,-13.93,Intrattenimento,NETFLIX,Streaming
+2024-05-09,-58.04,Trasporti,ENI,Rifornimento auto
+2024-05-15,-97.21,Abbigliamento,ZARA,Vestiti primavera
+2024-05-16,-26.24,Intrattenimento,CINEMA,Film weekend
+2024-05-20,-9.58,Intrattenimento,SPOTIFY,Musica
+2024-05-21,-39.49,Utenze,VODAFONE,Telefono + Internet
+2024-05-21,-82.82,Utenze,HERA GAS,Bolletta gas
+2024-05-22,-146.84,Abbigliamento,NIKE,Scarpe running
+2024-05-25,-100.09,Salute,STUDIO MEDICO,Visita specialistica
+2024-05-26,-139.32,Utenze,ENEL ENERGIA,Bolletta elettrica
+2024-05-27,-182.89,Intrattenimento,AMAZON PRIME,Shopping online
 2024-05-30,2850.0,Stipendio,AZIENDA TECH SRL,Stipendio mensile
-2024-06-01,-102.74,Abbigliamento,NIKE,Scarpe running
-2024-06-04,-91.71,Utenze,HERA GAS,Bolletta gas
-2024-06-04,-78.63,Abbigliamento,ZARA,Vestiti primavera
-2024-06-07,-8.4,Intrattenimento,SPOTIFY,Musica
-2024-06-08,-514.51,Casa,MEDIAWORLD,Elettrodomestici
-2024-06-10,-194.39,Casa,IKEA,Mobili cucina
-2024-06-14,-14.31,Intrattenimento,NETFLIX,Streaming
-2024-06-15,-12.52,Trasporti,UBER,Corsa centro
-2024-06-15,-126.35,Utenze,ENEL ENERGIA,Bolletta elettrica
-2024-06-19,-40.16,Utenze,VODAFONE,Telefono + Internet
-2024-06-22,-25.25,Intrattenimento,CINEMA,Film weekend
-2024-06-23,-30.81,Trasporti,ATM MILANO,Abbonamento mensile
-2024-06-23,-67.91,Trasporti,ENI,Rifornimento auto
-2024-06-24,-134.46,Intrattenimento,AMAZON PRIME,Shopping online
-2024-06-24,-57.33,Casa,LEROY MERLIN,Bricolage
+2024-05-31,-73.67,Alimentari,ESSELUNGA,Spesa grande
+2024-06-01,-13.38,Intrattenimento,NETFLIX,Streaming
+2024-06-03,-87.9,Utenze,HERA GAS,Bolletta gas
+2024-06-10,-71.38,Alimentari,COOP,Spesa settimanale
+2024-06-15,-42.16,Alimentari,CARREFOUR,Spesa quotidiana
+2024-06-20,-28.53,Intrattenimento,CINEMA,Film weekend
+2024-06-21,-156.24,Intrattenimento,AMAZON PRIME,Shopping online
+2024-06-21,-147.74,Utenze,ENEL ENERGIA,Bolletta elettrica
+2024-06-25,-39.64,Utenze,VODAFONE,Telefono + Internet
+2024-06-25,-10.43,Intrattenimento,SPOTIFY,Musica
