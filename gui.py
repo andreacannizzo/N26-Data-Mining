@@ -156,6 +156,11 @@ class N26Gui(QWidget):
         self.dashboard_label.setAlignment(Qt.AlignCenter)
         main_layout.addWidget(self.dashboard_label)
 
+        # Status label per messaggi
+        self.status_label = QLabel('Pronto')
+        self.status_label.setStyleSheet('color: #34a853; font-size: 14px; padding: 5px;')
+        main_layout.addWidget(self.status_label)
+
         # Selettore tipo grafico
         self.graph_selector = QComboBox()
         self.graph_selector.addItems([
@@ -208,6 +213,27 @@ class N26Gui(QWidget):
         self.btn_report_history.clicked.connect(self.show_report_history)
         export_layout.addWidget(self.btn_report_history)
         main_layout.addLayout(export_layout)
+
+        # Pulsante principale per avviare il mining
+        self.btn_start_mining = QPushButton('🚀 Avvia Mining N26')
+        self.btn_start_mining.setStyleSheet("""
+            QPushButton {
+                background-color: #34a853;
+                color: #fff;
+                border: none;
+                border-radius: 20px;
+                padding: 15px 30px;
+                font-size: 18px;
+                font-weight: bold;
+                margin: 10px;
+            }
+            QPushButton:hover {
+                background-color: #46bdc6;
+                color: #222;
+            }
+        """)
+        self.btn_start_mining.clicked.connect(self.run_mining)
+        main_layout.addWidget(self.btn_start_mining)
 
         # Pulsante report
         self.btn_report = QPushButton('Genera Report')

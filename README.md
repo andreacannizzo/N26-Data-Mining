@@ -24,21 +24,31 @@ $ python3 main.py
 ```
 than accept the 2AF request within 30 seconds. It will open a chrome driver browser and start gathering data in a file called N26_Data.csv.
 
-### Modalità GUI (Interfaccia Grafica)
+### Modalità GUI (Interfaccia Grafica) ⭐ NUOVO!
 Per utilizzare l'interfaccia grafica avanzata:
 ```bash
-$ python3 gui.py
+$ ./start_gui.sh
 ```
 
-La GUI offre funzionalità avanzate tra cui:
-- **Dashboard Riepilogativa**: Visualizzazione immediata di saldo, spese mensili e transazioni recenti
-- **Filtri Avanzati**: Filtro per data, beneficiario, categoria e importo
-- **Grafici Interattivi**: Grafici a torta per categorie, grafici a barre per spese mensili e beneficiari principali
-- **Esportazione Multipla**: Esportazione in CSV, Excel, JSON, PDF e PNG
-- **Automazioni**: Invio report via email, notifiche Telegram, esportazioni programmate
-- **Ricerca Full-Text**: Ricerca avanzata nelle descrizioni delle transazioni
-- **Analisi Predittiva**: Previsioni basate sui pattern di spesa
-- **Stampa Diretta**: Stampa report direttamente dall'applicazione
+**🚀 Avvio Rapido:**
+```bash
+# Controllo salute del sistema
+$ python health_check.py
+
+# Avvio GUI
+$ ./start_gui.sh
+```
+
+**📋 Funzionalità GUI Complete:**
+- **🏠 Dashboard Riepilogativa**: Saldo, spese medie, transazioni recenti
+- **🔍 Filtri Avanzati**: Data, beneficiario, categoria e importo  
+- **📊 Grafici Interattivi**: Categorie, spese mensili, beneficiari principali
+- **💾 Esportazione Multipla**: CSV, Excel, JSON, PDF e PNG
+- **🤖 Automazioni**: Email, Telegram, esportazioni programmate
+- **🔎 Ricerca Full-Text**: Ricerca avanzata nelle descrizioni
+- **🔮 Analisi Predittiva**: Previsioni basate sui pattern di spesa
+- **🖨️ Stampa Diretta**: Stampa report dall'applicazione
+- **⚙️ Impostazioni Avanzate**: Timeout, lingua, formati personalizzabili
 
 ## Configurazione avanzata
 
@@ -52,6 +62,35 @@ export LABEL_CSV_NAME="labels.csv"
 ## Logging
 
 Il programma ora utilizza il modulo logging di Python. Puoi personalizzare il livello di logging modificando la configurazione in `main.py`.
+
+## 🛠️ Troubleshooting
+
+### GUI non si avvia
+```bash
+# Controllo salute del sistema
+python health_check.py
+
+# Reinstallazione ambiente virtuale
+rm -rf venv && python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt
+```
+
+### Dipendenze mancanti
+```bash
+# Installazione manuale di tutte le dipendenze
+source venv/bin/activate
+pip install PyQt5 pandas matplotlib seaborn openpyxl fpdf2 reportlab requests schedule selenium
+```
+
+### Problemi di display (ambiente headless)
+```bash
+# Test GUI senza display
+QT_QPA_PLATFORM=offscreen python gui.py
+```
+
+### File correlati
+- `health_check.py` - Diagnostica sistema
+- `QUICK_GUIDE.md` - Guida rapida utilizzo
+- `test_*.py` - Suite di test automatici
 
 ### Disclaimer
 
