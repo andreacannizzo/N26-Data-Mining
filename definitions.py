@@ -19,8 +19,8 @@ def login(browser, username_str, password_str):
         password.send_keys(password_str)
         submit = browser.find_element("xpath", "//button")
         submit.submit()
-        for i in range(20):
-            print(f"You have {20-i} seconds to accept access")
+        for i in range(40):
+            print(f"You have {40-i} seconds to accept access")
             time.sleep(1)
     except:
         print("problem(s) while logging in")
